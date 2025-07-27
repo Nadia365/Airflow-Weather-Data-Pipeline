@@ -77,7 +77,7 @@ MinIO Windows Setup
 
 ### Start MinIO Server
 
-```bash
+   ```bash
    .\minio.exe server C:\minio\data --address ":9000" --console-address ":9001" --config-dir C:\minio\config   `
 
 *   **API Endpoint**: http://192.168.1.78:9000 (or http://127.0.0.1:9000)
@@ -89,8 +89,7 @@ MinIO Windows Setup
 
 ### Create Storage Bucket
 
-```bash
-
+  ```bash
    mc alias set myminio http://192.168.1.78:9000 minioadmin minioadmin  mc mb myminio/weatherapiairflowyoutubebucket-yml   `
 
 Airflow Configuration
