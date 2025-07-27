@@ -36,12 +36,12 @@ Before diving in, ensure you have:
    ```bash
    sudo apt update
    sudo apt install python3-pip python3.10-venv
-
+ ```
 ### Create Virtual Environment
 ```bash
 python3 -m venv ~/airflow_venv
 source ~/airflow_venv/bin/activate
-
+```
 # Airflow and MinIO Setup Guide
 
 ## Installation and Configuration
@@ -53,13 +53,14 @@ pip install apache-airflow \
     apache-airflow-providers-amazon \
     pandas \
     boto3
+```
 # Airflow and MinIO Setup Guide
 
 ## Initialize Airflow
 
 ```bash
 airflow standalone
-
+```
 *   **Airflow UI**: [http://localhost:8080](http://localhost:8080/)
     
 *   **Note**: Admin password will be displayed in the command output
@@ -79,7 +80,7 @@ MinIO Windows Setup
 
    ```bash
    .\minio.exe server C:\minio\data --address ":9000" --console-address ":9001" --config-dir C:\minio\config   `
-
+   ```
 *   **API Endpoint**: http://192.168.1.78:9000 (or http://127.0.0.1:9000)
     
 *   **Web Console**: http://192.168.1.78:9001
@@ -91,14 +92,14 @@ MinIO Windows Setup
 
   ```bash
    mc alias set myminio http://192.168.1.78:9000 minioadmin minioadmin  mc mb myminio/weatherapiairflowyoutubebucket-yml   `
-
+   ```
 Airflow Configuration
 ---------------------
 
 ### Set Up Working Directory
 ```bash
 mkdir -p ~/airflow/tmp  chmod 755 ~/airflow/tmp   `
-
+```
 ### Configure API Connection
 
 1.  Access the Airflow web interface at [http://localhost:8080](http://localhost:8080/)
