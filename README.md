@@ -33,9 +33,9 @@ Before diving in, ensure you have:
 ## Set Up Ubuntu Environment
 
 ### Update Ubuntu and install dependencies
-```bash
-sudo apt update
-sudo apt install python3-pip python3.10-venv
+   ```bash
+   sudo apt update
+   sudo apt install python3-pip python3.10-venv
 
 ### Create Virtual Environment
 ```bash
