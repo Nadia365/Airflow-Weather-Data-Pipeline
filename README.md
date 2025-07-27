@@ -1,9 +1,4 @@
-# Airflow-Weather-Data-Pipeline
 # Building an Airflow Weather Data Pipeline with MinIO Storage
-
-## Introduction to Medium
-
-Medium is a vibrant platform where writers, developers, and enthusiasts share knowledge, experiences, and tutorials with a global audience. Whether you're diving into data engineering, machine learning, or personal storytelling, Medium offers a space to publish accessible, high-quality content that inspires and educates. In this article, I'll walk you through a practical data engineering project: an Apache Airflow pipeline that fetches, transforms, and stores weather data in MinIO, a powerful S3-compatible object storage system. This project is perfect for data engineers looking to automate data workflows and integrate with modern storage solutions.
 
 ## Project Overview
 
@@ -41,3 +36,107 @@ Before diving in, ensure you have:
 ```bash
 sudo apt update
 sudo apt install python3-pip python3.10-venv
+
+### Create Virtual Environment
+```bash
+python3 -m venv ~/airflow_venv
+source ~/airflow_venv/bin/activate
+
+# Airflow and MinIO Setup Guide
+
+## Installation and Configuration
+
+### Install Airflow and Dependencies
+```bash
+pip install apache-airflow \
+    apache-airflow-providers-http \
+    apache-airflow-providers-amazon \
+    pandas \
+    boto3
+# Airflow and MinIO Setup Guide
+
+## Initialize Airflow
+
+```bash
+airflow standalone
+
+*   **Airflow UI**: [http://localhost:8080](http://localhost:8080/)
+    
+*   **Note**: Admin password will be displayed in the command output
+    
+
+MinIO Windows Setup
+-------------------
+
+### Download and Install MinIO
+
+1.  Download minio.exe from [min.io](https://min.io/)
+    
+2.  Save to C:\\minio directory
+    
+
+### Start MinIO Server
+
+```bash
+   .\minio.exe server C:\minio\data --address ":9000" --console-address ":9001" --config-dir C:\minio\config   `
+
+*   **API Endpoint**: http://192.168.1.78:9000 (or http://127.0.0.1:9000)
+    
+*   **Web Console**: http://192.168.1.78:9001
+    
+*   Username: minioadminPassword: minioadmin
+    
+
+### Create Storage Bucket
+
+```bash
+
+   mc alias set myminio http://192.168.1.78:9000 minioadmin minioadmin  mc mb myminio/weatherapiairflowyoutubebucket-yml   `
+
+Airflow Configuration
+---------------------
+
+### Set Up Working Directory
+```bash
+mkdir -p ~/airflow/tmp  chmod 755 ~/airflow/tmp   `
+
+### Configure API Connection
+
+1.  Access the Airflow web interface at [http://localhost:8080](http://localhost:8080/)
+    
+2.  Navigate to: **Admin** → **Connections** → **Add new connection**
+    
+3.  textCopyDownloadConnection ID: weathermap\_apiConnection Type: HTTPHost: api.openweathermap.orgSchema: http
+    
+
+Pipeline Implementation
+-----------------------
+
+### DAG Functions (weather\_dag.py)
+
+#### 1\. API Verification
+
+*   Check OpenWeatherMap API status and availability
+    
+
+#### 2\. Data Acquisition
+
+*   Retrieve current weather metrics from API
+    
+
+#### 3\. Data Transformation
+
+*   Convert temperature from Kelvin to Fahrenheit
+    
+*   Structure dataset using Pandas DataFrame
+    
+*   Clean and validate data
+    
+
+#### 4\. Data Persistence
+
+*   Stage processed data in ~/airflow/tmp
+    
+*   Archive final dataset to MinIO bucket
+    
+*   Verify successful upload
