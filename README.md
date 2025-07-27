@@ -140,3 +140,9 @@ Pipeline Implementation
 *   Archive final dataset to MinIO bucket
     
 *   Verify successful upload
+
+
+✅ Sample Output
+
+<img src="airflow.png" alt="Airflow" width="1500">
+<img src="minio.png" alt="Minio" width="1500">
