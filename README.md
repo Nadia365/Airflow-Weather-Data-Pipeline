@@ -6,7 +6,7 @@ This project creates an automated data pipeline using Apache Airflow to retrieve
 
 ### Objectives
 
-- **Fetch Data**: Query the OpenWeatherMap API for Portland's weather.
+- **Fetch Data**: Query the OpenWeatherMap API for Tunis's weather.
 - **Transform Data**: Convert temperatures from Kelvin to Fahrenheit and structure the data using Pandas.
 - **Store Data**: Save the transformed data as CSV files in MinIO's `weatherapiairflowyoutubebucket-yml` bucket.
 - **Automate**: Use Airflow to schedule and orchestrate the pipeline.
